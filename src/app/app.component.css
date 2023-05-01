@@ -1,0 +1,12 @@
+.Task{
+    color:red
+}
+.red {
+    color: red;
+  }
+.black{
+    color:black
+}
+.crossed-out {
+    text-decoration: line-through;
+  }

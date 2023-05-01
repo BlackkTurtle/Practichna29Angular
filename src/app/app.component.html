@@ -1,0 +1,57 @@
+<p class="Task">Task1</p>
+<input type="checkbox" [(ngModel)]="isVisible"> Show/Hide Paragraph
+<p *ngIf="isVisible">This is a paragraph to show/hide</p>
+
+<p class="Task">Task2</p>
+<input type="checkbox" [(ngModel)]="showParagraph">
+<p *ngIf="showParagraph">Цей абзац буде показуватися або ховатися залежно від стану чекбоксу</p>
+
+<p class="Task">Task3</p>
+<a href="#" (click)="isHidden = true">Сховати абзац</a><br>
+<a href="#" (click)="isHidden = false">Показати абзац</a>
+<p *ngIf="!isHidden">Це абзац, який можна приховати або показати</p>
+
+<p class="Task">Task4</p>
+<a href="#" (click)="toggleParagraph()">Натисни мене</a>
+<p [style.display]="isParagraphVisible ? 'block' : 'none'">Прихований абзац</p>
+
+<p class="Task">Task5</p>
+<div *ngFor="let item of items">
+  <input type="checkbox" [(ngModel)]="item.checked" (change)="toggleParagraph1(item)">
+  <p *ngIf="item.checked">{{ item.text }}</p>
+</div>
+
+<p class="Task">Task6</p>
+<input type="checkbox" [(ngModel)]="isChecked">
+    <p [ngClass]="{ 'red': isChecked,'black':!isChecked }">Цей абзац може бути червоним</p>
+
+<p class="Task">Task7</p>
+<input type="checkbox" [(ngModel)]="isRed"> Add red color<br>
+<input type="checkbox" [(ngModel)]="isCrossedOut"> Cross out text<br>
+<p [ngClass]="{'red': isRed, 'crossed-out': isCrossedOut}">This is a paragraph</p>
+
+<p class="Task">Task8</p>
+<select [(ngModel)]="selectedCountry">
+  <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+</select>
+<p>Вибрана країна: {{selectedCountry}}</p>
+
+<p class="Task">Task9</p>
+<select (change)="onSelect($event)">
+  <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+</select><br>
+<input type="text" [value]="selectedCity">
+
+<p class="Task">Task10</p>
+<div>
+  <label for="country-select">Country:</label>
+  <select id="country-select" (change)="onCountrySelect($event)">
+    <option *ngFor="let country of countries1" [value]="country.name">{{ country.name }}</option>
+  </select>
+</div>
+<div>
+  <label for="city-select">City:</label>
+  <select id="city-select" *ngIf="selectedCountry1">
+    <option *ngFor="let city of selectedCountry1.cities" [value]="city">{{ city }}</option>
+  </select>
+</div>
